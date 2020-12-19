@@ -1,6 +1,4 @@
-# RADEME
-
-## GOTOCompany
-
-储备-运用-出发
+# GOTOCompany
+#算法#
+#计算机基础知识#
 
