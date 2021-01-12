@@ -10,7 +10,7 @@
 
 
 public class ShellSort {
-    
+
     public static void printArray(int[] array){
         for(int i = 0; i < array.length; i++){
             System.out.println(array[i]);
@@ -18,8 +18,23 @@ public class ShellSort {
     }
 
     public static void shellSort(int[] array){
-
-       
+        int len = array.length;
+        while(len!=0){
+            //增量为 len/2 len/4 len/8.....1
+            len = len/2;
+            for(int i = 0; i < len; i++){//每次进行排序的元素数量为len个
+                for(int j = i + 1;j < array.length; j+=len){//每次比较的步长为len
+                    int k = j - len;
+                    int temp = array[j];
+                    while(k >= 0 && temp < array[k]){
+                        array[k + len] = array[k];
+                        k -= len;
+                    }
+                    array[k + len] = temp;
+             }
+         }
+        }
+        printArray(array);
     }
     public static void main(String[] args){
         shellSort(new int[]{4,6,3,2,5,1});
