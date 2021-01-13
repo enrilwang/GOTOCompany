@@ -33,7 +33,3 @@ while (q not empty) {
 }
 ```
 
-
-
-## 
-
