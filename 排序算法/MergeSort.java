@@ -2,7 +2,6 @@
  * 归并排序：1.将序列每相邻两个数字进行归并操作，形成 floor(n/2)个序列，排序后每个序列包含两个元素；
  *       2. 将上述序列再次归并，形成 floor(n/4)个序列，每个序列包含四个元素；
  *       3. 重复步骤 2，直到所有元素排序完毕。
- *      
  */
 
 import java.util.Arrays;
@@ -16,7 +15,7 @@ public class MergeSort {
     }
     public static int[] mergeSort(int[] array) {
         if(array.length <= 1) return array;
-        int num = array.length >> 1;
+        int num = array.length/2;
         int[] leftArr = Arrays.copyOfRange(array, 0, num);
         int[] rightArr = Arrays.copyOfRange(array, num, array.length);
         System.out.println("split two array: " + Arrays.toString(leftArr) + " And " + Arrays.toString(rightArr));
