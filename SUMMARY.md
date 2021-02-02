@@ -20,3 +20,7 @@
 * [计算机总线和IO设备，存储器，CPU](ji-suan-ji-zu-cheng-yuan-li/ji-suan-ji-zong-xian-he-io-she-bei-cun-chu-qi-cpu.md)
 * [缓存的置换算法（高速缓存拿主存的数据）](ji-suan-ji-zu-cheng-yuan-li/huan-cun-de-zhi-huan-suan-fa-gao-su-huan-cun-na-zhu-cun-de-shu-ju.md)
 
+## 操作系统
+
+* [总结一](cao-zuo-xi-tong/zong-jie-yi.md)
+
