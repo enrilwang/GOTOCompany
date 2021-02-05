@@ -14,19 +14,23 @@ public class QuickSort {
             System.out.println(array[i]);
         }
     }
+    
     public static void quickSort(int[] array, int low, int high) {
        if(low >= high){
            return;
        }
+
        int left = low;
        int right = high;
 
        int pivot = array[left];
        while(left < right){
+            //从后向前找小于pivot的元素
             while(left < right &&array[right] >= pivot){
                 right--;
             }
             array[left] = array[right];
+            //从前向后找大于pivot的元素
             while(left < right &&array[left] <= pivot){
                 left++;
             }
