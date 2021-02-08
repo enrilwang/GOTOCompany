@@ -1,7 +1,6 @@
 # Table of contents
 
 * [RADEME](README.md)
-* [分布式锁，乐观锁，CAS（无锁）](fen-bu-shi-suo-le-guan-suo-cas-wu-suo.md)
 
 ## 算法思想汇总
 
@@ -23,4 +22,10 @@
 ## 操作系统
 
 * [总结一](cao-zuo-xi-tong/zong-jie-yi.md)
+* [总结二](cao-zuo-xi-tong/zong-jie-er.md)
+
+## 数据库
+
+* [知识点总结一](shu-ju-ku/zhi-shi-dian-zong-jie-yi.md)
+* [分布式锁，乐观锁，CAS（无锁）](shu-ju-ku/fen-bu-shi-suo-le-guan-suo-cas-wu-suo.md)
 
