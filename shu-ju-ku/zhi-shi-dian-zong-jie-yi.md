@@ -13,3 +13,38 @@ Mysql的b+树 在原有b+树的基础上在叶子结点增加了双向指针 主
 2. 唯一索引：索引列的值必须唯一，但允许有空值
 3. 复合索引：一个索引包含多个列
 
+
+
+## MYSQL
+
+体系结构：连接层：验证和连接客户端，服务层：备份，恢复，mysql封装，缓存，优化，存储引擎层：选择合适的引擎对数据进行处理。文件系统：磁盘，处理完的数据存储在文件系统上。
+
+存储引擎应用在表上的，InnoDB是事务安全的而且锁机制是行锁（适合高并发）还支持外建，MyISAM是表锁，事务不安全不支持外建
+
+
+
+## SQL优化
+
+优化步骤：
+
+mysql -u root -p连接mysql
+
+1. 通过show global status like ‘Com\_\_\_\_\_‘，可以知道这个数据库主要的操作是select 还是update还是别的，可以对sql优化提供帮助
+   1. 针对InnoDB， show global status like“Innodb\_rows\_%“ 可以看到对innodb的操作，表示为读取了多少行，更新了多少列。。。
+2. show processlist：可以看到所有连接的id，用户名，主机，操作的数据库等等信息。可以看到客户端执行慢查询的信息。（**定位慢查询**）
+3. explain分析执行计划：在sql语句之前写上explain可以看到如下信息
+
+   1. id：是执行顺序，id值越高，优先级越高
+   2. select-type：simple，和primary等等，
+   3. table：执行的是对应的某张表
+   4. type：访问类型，有const表示通过索引一次找到，匹配一次数据速度较快，还有range是范围查询，然后是index表示遍历了索引树，速度较慢，最后是all，遍历全表找到匹配的行
+   5. posibble\_key:可能用到的索引
+   6. key：实际用到的索引
+   7. key len：表示索引中使用到的字节数，该值为索引字段最大可能长度
+   8. rows：扫描行的数量
+   9. extra：其他额外执行信息，如果出现using filesort或者using temporary就要考虑性能优化了
+
+4. show profiles：在做sql优化的时候能够了解时间都耗费到哪里去了，可以看到所有操作的耗时，然后输入show profile for query ID，当ID = 1时就可以看到第一个query的所有花费时间的信息
+
+
+
