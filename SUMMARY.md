@@ -28,6 +28,7 @@
 
 * [知识点总结一](shu-ju-ku/zhi-shi-dian-zong-jie-yi.md)
 * [分布式锁，乐观锁，CAS（无锁）](shu-ju-ku/fen-bu-shi-suo-le-guan-suo-cas-wu-suo.md)
+* [CAP（分布式cap理论）](shu-ju-ku/cap-fen-bu-shi-cap-li-lun.md)
 
 ## java <a id="java-web-bian-cheng"></a>
 
@@ -41,6 +42,7 @@
 * [CSS选择器](qian-duan/css-xuan-ze-qi.md)
 * [CSS美化网页元素](qian-duan/css-mei-hua-wang-ye-yuan-su.md)
 * [javascript](qian-duan/javascript.md)
+* [VUE](qian-duan/vue.md)
 
 ---
 
