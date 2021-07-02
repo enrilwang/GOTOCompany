@@ -9,9 +9,9 @@
 
 ## 计算机网络
 
-* [网络复习总结一](ji-suan-ji-wang-luo/wang-luo-fu-xi-zong-jie-yi.md)
-* [网络复习总结二](ji-suan-ji-wang-luo/wang-luo-fu-xi-zong-jie-er.md)
-* [网络复习总结三](ji-suan-ji-wang-luo/wang-luo-fu-xi-zong-jie-san.md)
+* [存储转发+网络性能](ji-suan-ji-wang-luo/wang-luo-fu-xi-zong-jie-yi.md)
+* [网络5层](ji-suan-ji-wang-luo/wang-luo-fu-xi-zong-jie-er.md)
+* [Tcp，cookie，加密](ji-suan-ji-wang-luo/wang-luo-fu-xi-zong-jie-san.md)
 * [Socket](ji-suan-ji-wang-luo/socket.md)
 
 ## 计算机组成原理
@@ -36,6 +36,7 @@
 * [web编程](java-web-bian-cheng/web-bian-cheng.md)
 * [多线程编程](java-web-bian-cheng/duo-xian-cheng-bian-cheng.md)
 * [JVM知识点](java-web-bian-cheng/jvm-zhi-shi-dian.md)
+* [redis内存数据库（高性能，高并发）](java-web-bian-cheng/redis-nei-cun-shu-ju-ku-gao-xing-neng-gao-bing-fa.md)
 
 ## 前端
 
@@ -52,4 +53,5 @@
 ## spring三件套
 
 * [Spring](spring-san-jian-tao/spring-1.md)
+* [IOC\(控制反转\)](spring-san-jian-tao/ioc-kong-zhi-fan-zhuan.md)
 
