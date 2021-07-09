@@ -40,3 +40,9 @@ CAP代表：C（sonsistent 一致性），A（availbility 可用性），P（par
 
 分区容错性指“`the system continues to operate despite arbitrary message loss or failure of part of the system`”，即分布式系统在遇到某节点或网络分区故障的时候，仍然能够对外提供满足一致性或可用性的服务。
 
+
+
+## CAP 
+
+在P满足的前提下，只能选择满足a或者c。
+
