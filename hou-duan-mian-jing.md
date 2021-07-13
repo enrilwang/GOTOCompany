@@ -2,7 +2,11 @@
 
 LRU缓存，http协议，如何实现java网络通信，http网络协议
 
+LRU缓存：哈希表+双向链表     双向链表靠近头部是最近使用的，靠近尾部是最久未使用的。哈希表通过缓存数据把键映射到双向链中的位置。Hashmap装的是&lt;Integer, LinkedNode&gt;
 
+
+
+快排：核心思想是分治，选定第一个为基数后，i第二个index，j最后一位，i从左往右，j从右往左，i遇到第一个比基数大的数字，j找到第一个比基数小的数字，两个交换，继续循环直到i&gt;=j，break。此时，划分了三部分，小与基数，基数，大于基数。[https://zhuanlan.zhihu.com/p/68088475](https://zhuanlan.zhihu.com/p/68088475)
 
 
 
@@ -66,6 +70,65 @@ get 同样不需要同步，put 操作时如果没有出现哈希冲突，就使
 当某个槽内的元素个数达到 7 且 table 容量不小于 64 时，[链表](/jump/super-jump/word?word=%E9%93%BE%E8%A1%A8)转为[红黑树](/jump/super-jump/word?word=%E7%BA%A2%E9%BB%91%E6%A0%91)。当某个槽内的元素减少到 6 时，由[红黑树](/jump/super-jump/word?word=%E7%BA%A2%E9%BB%91%E6%A0%91)重新转为[链表](/jump/super-jump/word?word=%E9%93%BE%E8%A1%A8)。在转化过程中，使用同步块锁住当前槽的首元素，防止其他线程对当前槽进行增删改操作，转化完成后利用 CAS 替换原有[链表](/jump/super-jump/word?word=%E9%93%BE%E8%A1%A8)。由于 TreeNode 节点也存储了 next 引用，因此[红黑树](/jump/super-jump/word?word=%E7%BA%A2%E9%BB%91%E6%A0%91)转为[链表](/jump/super-jump/word?word=%E9%93%BE%E8%A1%A8)很简单，只需从 first 元素开始遍历所有节点，并把节点从 TreeNode 转为 Node 类型即可，当构造好新[链表](/jump/super-jump/word?word=%E9%93%BE%E8%A1%A8)后同样用 CAS 替换[红黑树](/jump/super-jump/word?word=%E7%BA%A2%E9%BB%91%E6%A0%91)。
 
 
+
+单例模式：
+
+```text
+
+public final class Singleton {
+    private static Singleton instance=new Singleton();// 自行创建实例
+    private Singleton(){}// 构造函数
+    public static Singleton getInstance(){// 通过该函数向整个系统提供实例
+        return instance;
+    }
+}
+
+饿汉模式在类加载的时候就对实例进行创建，实例在整个程序周期都存在。
+
+它的好处是只在类加载的时候创建一次实例，避免了多线程同步的问题。
+它的缺点，即使这个单例没有用到也会被创建，而且在类加载之后就被创建，内存就被浪费了。
+这种实现方式适合单例占用内存比较小，在初始化时就会被用到的情况。但是，如果单例占用的内存比较大，或单例只是在某个特定场景下才会用到，使用饿汉模式就不合适了，这时候就需要用到懒汉模式进行延迟加载。
+
+
+
+public final class Singleton {
+    private static Singleton instance= null;// 不实例化
+    private Singleton(){}// 构造函数
+    public static Singleton getInstance(){// 通过该函数向整个系统提供实例
+        if(null == instance){// 当 instance 为 null 时，则实例化对象，否则直接返回对象
+            instance = new Singleton();// 实例化对象
+        }
+        return instance;// 返回已存在的对象
+    }
+}
+好处：懒汉模式中单例是在需要的时候才去创建的，如果单例已经创建，而是直接返回之前创建的对象。
+适用于：如果某个单例使用的次数少，并且创建单例消耗的资源较多，那么就需要实现单例的按需创建，这个时候使用懒汉模式就是一个不错的选择。
+缺点：懒汉模式并没有考虑线程安全问题，在多个线程可能会并发调用它的getInstance()方法，导致创建多个实例，因此需要加锁解决线程同步问题，实现如下:
+
+加锁还是会创建多个实例
+
+
+
+以下是双重校验。
+// 懒汉模式 + synchronized 同步锁 + double-check
+public final class Singleton {
+    private static Singleton instance= null;// 不实例化
+    private Singleton(){}// 构造函数
+    public static Singleton getInstance(){// 加同步锁，通过该函数向整个系统提供实例
+        if(null == instance){// 第一次判断，当 instance 为 null 时，则实例化对象，否则直接返回对象
+          synchronized (Singleton.class){// 同步锁
+             if(null == instance){// 第二次判断
+                instance = new Singleton();// 实例化对象
+             }
+          } 
+        }
+        return instance;// 返回已存在的对象
+    }
+
+}
+```
+
+怎么产生僵尸进程：一个进程调用exit 命令结束自己的时候，其实他并没有真正的被销毁，只是进程不能被调度并处于exit\_zombie状态。它占用的所有内存就是内核栈。此时进程存在的唯一目的就是向它的父进程提供信息，如果他的父进程没有调用wait或者waitpid等待子进程结束又没有显示地忽略该信号，那么它就会一直保持exit\_zombie状态。 __如何清理僵尸进程呢？：把父进程杀掉，此时僵尸进程成为“孤儿进程“，过继给init进程，init进程始终负责清理僵尸进程，它产生的所有僵尸进程也跟着消失。
 
 
 
