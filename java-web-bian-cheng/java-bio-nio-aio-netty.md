@@ -14,9 +14,9 @@ IO多路复用是一种同步IO模型，实现一个线程可以监视多个文�
 
 没有多路复用的时候，有BIO和NIO两种实现方式，但是有问题。
 
-select: 运行到select会堵塞，把一组fd从用户态转换成内核态，由内核态去查找，找到了就讲bitmap置位，但是大小只有1024个fd
+select: 运行到select会堵塞，把一组fd从用户态转换成内核态，由内核态去查找，找到了就将bitmap置位，但是大小只有1024个fd
 
-poll：思路和select一样但是取消了1024的限制，因为有自己的struct，置位置的是revent变量。
+poll：思路和select一样但是取消了1024的限制，因为有自己的struct，置位置的是revent变量。底层是链表结构。
 
 epoll：先是用epoll create创建epfd，然后需要epoll ctl函数进行配置。因为在epoll wait函数里面需要用到这个参数。好处就是不需要进行拷贝了，还是内核态来检查。epoll中的置位 是进行重排，把有数据的往前放。然后进行返回。
 
