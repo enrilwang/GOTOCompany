@@ -30,6 +30,7 @@
 * [知识点总结一](shu-ju-ku/zhi-shi-dian-zong-jie-yi.md)
 * [分布式锁，乐观锁，CAS（无锁）](shu-ju-ku/fen-bu-shi-suo-le-guan-suo-cas-wu-suo.md)
 * [CAP（分布式cap理论）](shu-ju-ku/cap-fen-bu-shi-cap-li-lun.md)
+* [负载均衡算法+一致性哈希](shu-ju-ku/fu-zai-jun-heng-suan-fa-+-yi-zhi-xing-ha-xi.md)
 
 ## java <a id="java-web-bian-cheng"></a>
 
