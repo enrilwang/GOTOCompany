@@ -59,5 +59,5 @@
 
 ---
 
-* [云数据库 redis版](yun-shu-ju-ku-redis-ban.md)
+* [云数据库 redis版\(阿里的产品\)](yun-shu-ju-ku-redis-ban.md)
 
