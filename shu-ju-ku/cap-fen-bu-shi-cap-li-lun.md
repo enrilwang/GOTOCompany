@@ -46,3 +46,11 @@ CAP代表：C（sonsistent 一致性），A（availbility 可用性），P（par
 
 在P满足的前提下，只能选择满足a或者c。
 
+## 分布式raft算法：日志复制，leader选举
+
+三种状态：leader：主要是向follower同步日志，当日志同步到大多数节点上后，提交日志
+
+folower：接受并持久化leader同步的日志，在leader告知同步日志之后，同步日志
+
+candidate：leader选举过程中的临时角色
+
